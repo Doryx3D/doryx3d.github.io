@@ -65,7 +65,6 @@ a:hover{
   white-space: pre;
   line-height: 1;
   margin-bottom: 20px;
-  font-size: 2vw;
 }
 
 .return .fetch {
@@ -94,6 +93,9 @@ a:hover{
 }
 
 @media(max-width:700px){
+  .return.title {
+    font-size: 2vw;
+  }
   .return .fetch {
     display: flex;
     flex-direction: column;
