@@ -13,6 +13,8 @@
 	--green:   	#98971a;
 	--blue:    	#458588;
   --blue2:    #83a598;
+  --orange:   #d65d0e;
+  --orange2:  #fe8019;
 	font-family: JetBrainsMono, monospace;
 
   box-sizing: border-box;
@@ -63,6 +65,24 @@ a:hover{
   white-space: pre;
   line-height: 1;
   margin-bottom: 20px;
+}
+
+.return .fetch {
+  display: flex;
+  margin-top: 20px;
+}
+
+.return .profile {
+  margin-left: 40px;
+}
+
+.profile a{
+  text-decoration: underline;
+  color: var(--orange);
+}
+.profile a:hover{
+  color: var(--orange2);
+  border-bottom: 1px solid;
 }
 
 .navbar li {
