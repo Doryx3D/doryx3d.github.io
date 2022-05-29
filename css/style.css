@@ -2,3 +2,31 @@
   font-family: JetBrainsMono;
   src: url(../assets/fonts/JetBrains Mono Regular Nerd Font Complete.ttf);
 }
+
+* {
+  --bg:       #282828;
+  --border:   #fabd2f;
+	--gray:	   	#a89984;
+  --fg:       #ebdbb2;
+  --red:  		#cc241d;
+  --yellow: 	#d79921;
+	--green:   	#98971a;
+	--blue:    	#458588;
+	font-family: JetBrainsMono, monospace, sans-serif;
+
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body{
+  background-color: var(--bg);
+  color: var(--fg);
+  padding: 0px 8px 0px 8px;
+ }
+
+.terminal {
+border: 2px solid var(--border);
+border-radius: 4px;
+min-height: 100vh;
+}
