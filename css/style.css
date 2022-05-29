@@ -65,10 +65,13 @@ a:hover{
   white-space: pre;
   line-height: 1;
   margin-bottom: 20px;
+  font-size: 2vw;
 }
 
 .return .fetch {
   display: flex;
+  justify-content: left;
+  align-content: center;
   margin-top: 20px;
 }
 
@@ -89,3 +92,19 @@ a:hover{
   display: inline;
   white-space: nowrap;
 }
+
+@media(max-width:700px){
+  .return .fetch {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-content: center;
+    margin-top: 20px;
+  }
+  .return .profile {
+    margin-left: 0;
+  }
+  .profileimage img {
+    max-width: 50%;
+    height: auto;
+  }
