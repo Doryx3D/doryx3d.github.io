@@ -1,21 +1,73 @@
 @font-face {
-  font-family: JetBrainsMono;
+  font-family: Iosevka;
   src: url(../assets/fonts/Iosevka\ Nerd\ Font\ Complete.ttf);
 }
 
+:root {
+  /*cold*/
+  --nord-bg:        #2E3440;
+  --nord-border:    #88C0D0;
+	--nord-grey:	    #81A1C1;
+  --nord-fg:        #D8DEE9;
+  --nord-red:  		  #BF616A;
+  --nord-yellow: 	  #EBCB8B;
+	--nord-green:     #A3BE8C;
+	--nord-blue:      #5E81AC;
+  --nord-blue2:     #81A1C1;
+  --nord-orange:    #D08770;
+  --nord-button:    #5E81AC;
+  --nord-st: "--warm-theme\00a0";
+
+  /*hot*/
+  --gruv-bg:        #32302f;
+  --gruv-border:    #fabd2f;
+  --gruv-grey:	   	#a89984;
+  --gruv-fg:        #d5c4a1;
+  --gruv-red:  		  #cc241d;
+  --gruv-yellow: 	  #fabd2f;
+  --gruv-green:   	#b8bb26;
+  --gruv-blue:    	#65bbbf;
+  --gruv-blue2:     #83a598;
+  --gruv-orange:    #d65d0e;
+  --gruv-button:    #fabd2f;
+  --gruv-st: "--cold-theme\00a0";
+
+  /*default*/
+  --bg: var(--nord-bg);
+  --border: var(--nord-border);
+  --grey: var(--nord-grey);
+  --fg: var(--nord-fg);
+  --red: var(--nord-red);
+  --yellow: var(--nord-yellow);
+  --green: var(--nord-green);
+  --blue: var(--nord-blue);
+  --blue2: var(--nord-blue2);
+  --orange: var(--nord-orange);
+  --button: var(--nord-button);
+
+  --switch-text: var(--nord-st);
+  --switch-bg: var(--gruv-button);
+}
+/*switched*/
+.theme-switch:checked ~ .terminal{
+  --bg: var(--gruv-bg);
+  --border: var(--gruv-border);
+  --grey: var(--gruv-grey);
+  --fg: var(--gruv-fg);
+  --red: var(--gruv-red);
+  --yellow: var(--gruv-yellow);
+  --green: var(--gruv-green);
+  --blue: var(--gruv-blue);
+  --blue2: var(--gruv-blue2);
+  --orange: var(--gruv-orange);
+  --button: var(--gruv-button);
+
+  --switch-text: var(--gruv-st);
+  --switch-bg: var(--nord-button);
+}
+
 * {
-  --bg:       #32302f;
-  --border:   #fabd2f;
-	--grey:	   	#a89984;
-  --fg:       #d5c4a1;
-  --red:  		#cc241d;
-  --yellow: 	#fabd2f;
-	--green:   	#b8bb26;
-	--blue:    	#65bbbf;
-  --blue2:    #83a598;
-  --orange:   #d65d0e;
-  --orange2:  #fe8019;
-	font-family: JetBrainsMono, monospace;
+	font-family: Iosevka, monospace;
 
   box-sizing: border-box;
   padding: 0;
@@ -24,8 +76,7 @@
 
 body{
   background-color: var(--bg);
-  color: var(--fg);
-  padding: 0px 8px 0px 8px;
+  padding: 0px 0px 0px 0px;
 }
 
 ul{
@@ -41,30 +92,61 @@ a:hover{
   border-bottom: 1px solid;
 }
 
+.theme-switch {
+  display: none;
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+}
+
+.switch-label {
+  cursor: pointer;
+  display: flex;
+  float: right;
+}
+.switch-label::before {
+  content: "\00a0use\00a0";
+  color: var(--bg);
+  background-color: var(--switch-bg);
+  border-radius: 10px 0 0 10px;
+}
+.switch-label::after {
+  content: var(--switch-text);
+  background-color: var(--switch-bg);
+  font-weight: bold;
+  color: var(--bg);
+}
+
 .terminal {
+  background-color: var(--bg);
+  color: var(--fg);
   border: 2px solid var(--border);
   border-radius: 4px;
   min-height: 100vh;
-  padding: 25px;
+  padding: 0;
 }
 
 .shell {
   display: flex;
   flex-wrap: wrap;
   padding: 0;
-  margin: 0;
+  margin-top: 20px;
+  margin-left: 25px;
 }
 .shell .command {
   margin-left: 8px;
 }
 
 #last::after {
-  content: "▍";
+  content: "\00a0▍";
   display: inline-block;
   animation: cursor-blink 1.2s steps(2) infinite;
 }
 
 .return {
+  margin-left: 25px;
   margin-bottom: 20px;
 }
 
