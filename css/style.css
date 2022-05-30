@@ -1,6 +1,6 @@
 @font-face {
   font-family: JetBrainsMono;
-  src: url(../assets/fonts/JetBrains\ Mono\ Regular\ Nerd\ Font\ Complete.ttf);
+  src: url(../assets/fonts/Iosevka\ Nerd\ Font\ Complete.ttf);
 }
 
 * {
@@ -70,8 +70,8 @@ a:hover{
 
 .return.title {
   white-space: pre;
-  line-height: 1;
   margin-bottom: 20px;
+  font-size: 0.8em;
 }
 
 .return .fetch {
@@ -100,7 +100,7 @@ a:hover{
   white-space: nowrap;
 }
 
-@media(max-width:700px){
+@media(max-width:550px){
   .return.title {
     font-size: 2vw;
   }
