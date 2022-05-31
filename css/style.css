@@ -17,6 +17,7 @@
   --nord-orange:    #D08770;
   --nord-button:    #5E81AC;
   --nord-st: "--warm-theme\00a0";
+  --nord-profimg: url(../assets/images/Icon_toon_cold.png);
 
   /*hot*/
   --gruv-bg:        #32302f;
@@ -31,6 +32,7 @@
   --gruv-orange:    #d65d0e;
   --gruv-button:    #fabd2f;
   --gruv-st: "--cold-theme\00a0";
+  --gruv-profimg: url(../assets/images/Icon_toon_warm.png);
 
   /*default*/
   --bg: var(--nord-bg);
@@ -44,6 +46,7 @@
   --blue2: var(--nord-blue2);
   --orange: var(--nord-orange);
   --button: var(--nord-button);
+  --profimg: var(--nord-profimg);
 
   --switch-text: var(--nord-st);
   --switch-bg: var(--gruv-button);
@@ -61,6 +64,7 @@
   --blue2: var(--gruv-blue2);
   --orange: var(--gruv-orange);
   --button: var(--gruv-button);
+  --profimg: var(--gruv-profimg);
 
   --switch-text: var(--gruv-st);
   --switch-bg: var(--nord-button);
@@ -168,13 +172,19 @@ a:hover{
   line-height: 1.4em;
 }
 
-.profile a{
+.profile a {
   text-decoration: underline;
   color: var(--blue);
 }
-.profile a:hover{
+.profile a:hover {
   color: var(--blue2);
   border-bottom: 1px solid;
+}
+.profileimage {
+  width: 270px;
+  height: auto;
+  background-image: var(--profimg);
+  background-repeat: no-repeat; 
 }
 
 .navbar li {
