@@ -135,8 +135,10 @@ a:hover{
   color: var(--fg);
   border: 2px solid var(--border);
   border-radius: 4px;
-  min-height: 100vh;
+  /*external border*/
+  min-height: 98vh;
   padding: 0;
+  margin: 8px;
 }
 
 .shell {
@@ -154,6 +156,7 @@ a:hover{
   content: "\00a0▍";
   display: inline-block;
   animation: cursor-blink 1.2s steps(2) infinite;
+  margin-bottom: 20px;
 }
 
 .return {
