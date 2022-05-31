@@ -83,6 +83,13 @@ body{
   padding: 0px 0px 0px 0px;
 }
 
+p {
+  margin-top: 10px;
+}
+.return p {
+  max-width: 780px;
+}
+
 ul{
   list-style-type: none;
 }
