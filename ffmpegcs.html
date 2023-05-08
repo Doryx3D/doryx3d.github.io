@@ -21,10 +21,10 @@
       </div>
 
       <div class="return">
-        <p>Here you will find a cheat sheet of some useful commands of ffmpeg.<br>
-           ffmpeg is a powerful CLI tool able to convert countless video/audio/image formats.<br>
-           In particular, I will collect some commands that I use most often to create animations and change file formats.<br>
-           Examples are for Windows, but you can easly change paths and formats to Unix systems.<br>
+        <p>Here you will find a cheat sheet of some useful commands for ffmpeg.<br>
+           ffmpeg is a powerful CLI tool able to edit and convert countless video/audio/image formats, but at times its commands are hard to remember.<br>
+           To help myself and others, I will collect and explain here the commands that I use most often to create animations and change file formats.<br>
+           Please note that these are for Windows, but you can easly change paths and formats for Unix systems.<br>
            Open your terminal of choice and let's begin!</p>
         <p>========================</p>
         <br>
@@ -41,10 +41,10 @@
       </div>
 
       <div class="return">
-        <p># Extracting frames from an MP4, useful to convert it to GIF, APNG and WebP.</p>
+        <p># Extract frames from a video.</p>
         <p class="cod">R:\ffmpeg.exe -i input.mp4 <span style="color: var(--red)"> -filter:v fps=fps=15/1</span> R:\frames\frame<span style="color: var(--orange)">%04d.png</span></p>
         <ul class="aboutlist">
-            <li><span style="color: var(--red)"></span> Specify framerate of the source video. 15fps in this example.</li>
+            <li><span style="color: var(--red)"></span> Insert framerate of the input video. 15fps in this example.</li>
             <li><span style="color: var(--orange)"></span> Recursively increment name.</li>
         </ul>
         <p>========================</p>
@@ -62,26 +62,26 @@
       </div>
 
       <div class="return">
-        <p># Extracting Color Palette from an MP4, needed for GIF creation.</p>
+        <p># Extract Color Palette from a video. This is needed for GIF creation and must be used before the next command.</p>
         <p class="cod">R:\ffmpeg.exe -i input.mp4 <span style="color: var(--red)"> -vf fps=15</span>,scale=-1:-1:flags=lanczos,palettegen palette.png</p>
         <ul class="aboutlist">
-            <li><span style="color: var(--red)"></span> Specify framerate of the source video. 15fps in this example.</li>
+            <li><span style="color: var(--red)"></span> Insert framerate of the input video. 15fps in this example.</li>
         </ul>
         <br>
       </div>
 
       <div class="return">
-        <p># Generating GIF from an MP4 and its Color Palette.</p>
+        <p># Generate GIF from a video and its Color Palette.</p>
         <p class="cod">R:\ffmpeg.exe -i input.mp4 -i R:\palette.png -filter_complex "<span style="color: var(--red)">fps=15</span>,<span style="color: var(--orange)">scale=-1:-1</span>:flags=lanczos[x];[x][1:v]paletteuse" output.gif</p>
         <ul class="aboutlist">
-            <li><span style="color: var(--red)"></span> Specify framerate of the source video. 15fps in this example.</li>
+            <li><span style="color: var(--red)"></span> Insert framerate of the input video. 15fps in this example.</li>
             <li><span style="color: var(--orange)"></span> Resolution in px, -1 is same as source. scale=320:-1 is 320px.</li>
         </ul>
         <br>
       </div>
 
       <div class="return">
-        <p># Examples of Dither control.</p>
+        <p># How to use Dither control to change quality and size of the output GIF.</p>
         <p class="cod">R:\ffmpeg.exe -i input.mp4 -i R:\palette.png -filter_complex "fps=15,scale=-1:-1</span>:flags=lanczos[x];[x][1:v]paletteuse<span style="color: var(--red)">=dither=bayer:</span><span style="color: var(--orange)">bayer_scale=2:diff_mode=rectangle</span>" output.gif</p>
         <ul class="aboutlist">
             <li><span style="color: var(--red)"></span> Bayer algorithm.</li>
@@ -102,12 +102,12 @@
         <span style="color: var(--green)">doryx3d.github.io</span>
         <span style="color: var(--grey)">:$ ~</span>
         <div class="command">
-          VIDEO CONVERSIONS
+          VIDEO CONVERSION
         </div>
       </div>
 
       <div class="return">
-        <p># Change Container. This conversion change the container of the file leaving the codecs untouched. This has a lot of limitations because every container supports only a limited quantity of codecs. Choose the output container accordingly. This kind of conversion should be almost instantaneous, limited by memory copy speed.</p>
+        <p># Change Container. This conversion change the container of the file, leaving the codecs untouched. This has a lot of limitations because every container supports only a limited quantity of codecs. Choose the output container accordingly. This kind of conversion should be almost instantaneous, limited by memory copy speed.</p>
         <p class="cod">R:\ffmpeg -i input.mkv -vcodec copy -acodec copy output<span style="color: var(--red)">.mp4</span></p>
         <ul class="aboutlist">
             <li><span style="color: var(--red)"></span> The output container is automatically detected from the file extension.</li>
@@ -123,7 +123,7 @@
         <p># Codec Conversion - Quality Target. This is an actual codec change. I will cover only the most basic instructions since this is the most vaste and versatile part of FFMPEG. </p>
         <p class="cod">R:\ffmpeg.exe -i input.mp4 <span style="color: var(--red)"> -c:v libx264</span><span style="color: var(--orange)"> -crf 22</span><span style="color: var(--yellow)"> -preset fast</span> -c:a aac <span style="color: var(--green)">-b:a 194k </span> output.mp4</p>
         <ul class="aboutlist">
-            <li><span style="color: var(--red)"></span> Video codec. Common choices are libx264 libx265 libvpx-vp9 libaom-av1 (h264, h265/HEVEC, VP9, AV1)</li>
+            <li><span style="color: var(--red)"></span> Video codec. Common choices are libx264 libx265 libvpx-vp9 libaom-av1 (h264, h265/HEVEC, VP9, AV1).</li>
             <li><span style="color: var(--orange)"></span> Quality control. The range of the CRF scale is 0–51, where 0 is lossless (for 8 bit only, for 10 bit use -qp 0), 23 is the default, and 51 is worst quality possible. A lower value generally leads to higher quality, and a subjectively sane range is 17–28 for h264. 28 is default for h265. </li>
             <li><span style="color: var(--yellow)"></span> Compression control. The preset determines compression efficiency and therefore affects encoding speed. Valid presets are ultrafast, superfast, veryfast, faster, fast, medium, slow, slower, veryslow, and placebo. Use the slowest preset you have patience for. </li>
             <li><span style="color: var(--green)"></span> Audio Bitrate.</li>
@@ -155,12 +155,13 @@
         <p># Compare two video files. You can use this to highlight the differences between the source file and the compressed output.</p>
         <p class="cod">R:\ffmpeg.exe -i source.mp4 -i encoded.mkv -filter_complex "blend=all_mode=difference,format=yuv420p" -c:v libx264 -crf 20 -c:a copy output.mp4</p>
         <br>
-        <p># Remember that you can drag and drop ffmpeg.exe from its folder to the terminal. You can do the same with the input files sou you don't have to write the path. <br>
+        <p># Quick Tips about the terminal usage. <br>
+        Remember that you can drag and drop ffmpeg.exe from its folder to the terminal. You can do the same with the input files so you don't have to write the path. <br>
         You can press TAB to auto-complete path and file names. <br>
         You can change the work folder with the command <span style="color: var(--red)">cd C:\work\path</span><br>
         You can press ↑ (up) to recall the previous command and edit it, so you don't have to rewrite it from start. <br>
         You can paste text in Windows Terminal with Right Mouse Click inside the window. <br>
-        You can stop the currend conversion with CTRL+C</p>
+        You can stop the current conversion with CTRL+C</p>
         <p>========================</p>
         <br>
       </div>
