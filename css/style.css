@@ -86,8 +86,13 @@ body{
 p {
   margin-top: 10px;
 }
-.return p {
+/*.return p {
   max-width: 780px;
+}*/
+
+.cod {
+  margin-top: 10px;
+  color: var(--grey);
 }
 
 ul{

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <title>Doryx3D | ffmpeg Cheat Sheet</title>
+  </head>
+  <body>
+    <input type="checkbox" class="theme-switch "id="theme-switch">
+    <div class="terminal">
+      <label for="theme-switch" class="switch-label"></label>
+      <div class="shell">
+          <span style="color: var(--yellow)">guest</span>
+          <span style="color: var(--grey)">@</span>
+          <span style="color: var(--green)">doryx3d.github.io</span>
+          <span style="color: var(--grey)">:$ ~</span>
+          <div class="command">
+            INTRO
+          </div>
+      </div>
+
+      <div class="return">
+        <p>Here you will find a cheat sheet of some useful commands of ffmpeg.<br>
+           ffmpeg is a powerful CLI tool able to convert countless video/audio/image formats.<br>
+           In particular, I will collect some commands that I use most often to create animations and change file formats.<br>
+           Examples are for Windows, but you can easly change paths and formats to Unix systems.<br>
+           Open your terminal of choice and let's begin!</p>
+        <p>========================</p>
+        <br>
+      </div>
+
+      <div class="shell">
+        <span style="color: var(--yellow)">guest</span>
+        <span style="color: var(--grey)">@</span>
+        <span style="color: var(--green)">doryx3d.github.io</span>
+        <span style="color: var(--grey)">:$ ~</span>
+        <div class="command">
+          FRAMES
+        </div>
+      </div>
+
+      <div class="return">
+        <p># Extracting frames from an MP4, useful to convert it to GIF, APNG and WebP.</p>
+        <p class="cod">R:\ffmpeg.exe -i input.mp4 <span style="color: var(--red)"> -filter:v fps=fps=15/1</span> R:\frames\frame<span style="color: var(--orange)">%04d.png</span></p>
+        <ul class="aboutlist">
+            <li><span style="color: var(--red)"></span> Specify framerate of the source video. 15fps in this example.</li>
+            <li><span style="color: var(--orange)"></span> Recursively increment name.</li>
+        </ul>
+        <p>========================</p>
+        <br>
+      </div>
+
+      <div class="shell">
+        <span style="color: var(--yellow)">guest</span>
+        <span style="color: var(--grey)">@</span>
+        <span style="color: var(--green)">doryx3d.github.io</span>
+        <span style="color: var(--grey)">:$ ~</span>
+        <div class="command">
+          GIF CREATION
+        </div>
+      </div>
+
+      <div class="return">
+        <p># Extracting Color Palette from an MP4, needed for GIF creation.</p>
+        <p class="cod">R:\ffmpeg.exe -i input.mp4 <span style="color: var(--red)"> -vf fps=15</span>,scale=-1:-1:flags=lanczos,palettegen palette.png</p>
+        <ul class="aboutlist">
+            <li><span style="color: var(--red)"></span> Specify framerate of the source video. 15fps in this example.</li>
+        </ul>
+        <br>
+      </div>
+
+      <div class="return">
+        <p># Generating GIF from an MP4 and its Color Palette.</p>
+        <p class="cod">R:\ffmpeg.exe -i input.mp4 -i R:\palette.png -filter_complex "<span style="color: var(--red)">fps=15</span>,<span style="color: var(--orange)">scale=-1:-1</span>:flags=lanczos[x];[x][1:v]paletteuse" output.gif</p>
+        <ul class="aboutlist">
+            <li><span style="color: var(--red)"></span> Specify framerate of the source video. 15fps in this example.</li>
+            <li><span style="color: var(--orange)"></span> Resolution in px, -1 is same as source. scale=320:-1 is 320px.</li>
+        </ul>
+        <br>
+      </div>
+
+      <div class="return">
+        <p># Examples of Dither control.</p>
+        <p class="cod">R:\ffmpeg.exe -i input.mp4 -i R:\palette.png -filter_complex "fps=15,scale=-1:-1</span>:flags=lanczos[x];[x][1:v]paletteuse<span style="color: var(--red)">=dither=bayer:</span><span style="color: var(--orange)">bayer_scale=2:diff_mode=rectangle</span>" output.gif</p>
+        <ul class="aboutlist">
+            <li><span style="color: var(--red)"></span> Bayer algorithm.</li>
+            <li><span style="color: var(--orange)"></span> Intensity and mode.</li>
+        </ul>
+        <p class="cod">R:\ffmpeg.exe -i input.mp4 -i R:\palette.png -filter_complex "fps=15,scale=-1:-1</span>:flags=lanczos[x];[x][1:v]paletteuse<span style="color: var(--red)">=dither=sierra2_4a:</span><span style="color: var(--orange)">diff_mode=rectangle</span>" output.gif</p>
+        <ul class="aboutlist">
+            <li><span style="color: var(--red)"></span> Sierra algorithm.</li>
+            <li><span style="color: var(--orange)"></span> Mode.</li>
+        </ul>
+        <p>========================</p>
+        <br>
+      </div>
+
+      <div class="shell">
+        <span style="color: var(--yellow)">guest</span>
+        <span style="color: var(--grey)">@</span>
+        <span style="color: var(--green)">doryx3d.github.io</span>
+        <span style="color: var(--grey)">:$ ~</span>
+        <div class="command">
+          VIDEO CONVERSIONS
+        </div>
+      </div>
+
+      <div class="return">
+        <p># Change Container. This conversion change the container of the file leaving the codecs untouched. This has a lot of limitations because every container supports only a limited quantity of codecs. Choose the output container accordingly. This kind of conversion should be almost instantaneous, limited by memory copy speed.</p>
+        <p class="cod">R:\ffmpeg -i input.mkv -vcodec copy -acodec copy output<span style="color: var(--red)">.mp4</span></p>
+        <ul class="aboutlist">
+            <li><span style="color: var(--red)"></span> The output container is automatically detected from the file extension.</li>
+        </ul>
+        <p class="cod">R:\ffmpeg -i input.mkv -vcodec copy <span style="color: var(--red)">-acodec aac</span> output.mp4</p>
+        <ul class="aboutlist">
+            <li><span style="color: var(--red)"></span> If your source has and audio codec unsupported by the output, specify a compatible codec. This will need more time.</li>
+        </ul>
+        <br>
+      </div>
+
+      <div class="return">
+        <p># Codec Conversion - Quality Target. This is an actual codec change. I will cover only the most basic instructions since this is the most vaste and versatile part of FFMPEG. </p>
+        <p class="cod">R:\ffmpeg.exe -i input.mp4 <span style="color: var(--red)"> -c:v libx264</span><span style="color: var(--orange)"> -crf 22</span><span style="color: var(--yellow)"> -preset fast</span> -c:a aac <span style="color: var(--green)">-b:a 194k </span> output.mp4</p>
+        <ul class="aboutlist">
+            <li><span style="color: var(--red)"></span> Video codec. Common choices are libx264 libx265 libvpx-vp9 libaom-av1 (h264, h265/HEVEC, VP9, AV1)</li>
+            <li><span style="color: var(--orange)"></span> Quality control. The range of the CRF scale is 0–51, where 0 is lossless (for 8 bit only, for 10 bit use -qp 0), 23 is the default, and 51 is worst quality possible. A lower value generally leads to higher quality, and a subjectively sane range is 17–28 for h264. 28 is default for h265. </li>
+            <li><span style="color: var(--yellow)"></span> Compression control. The preset determines compression efficiency and therefore affects encoding speed. Valid presets are ultrafast, superfast, veryfast, faster, fast, medium, slow, slower, veryslow, and placebo. Use the slowest preset you have patience for. </li>
+            <li><span style="color: var(--green)"></span> Audio Bitrate.</li>
+        </ul>
+        <br>
+      </div>
+
+      <div class="return">
+        <p># Codec Conversion - Bitrate Target. You often need to target a specific file size, since bitrate(kbps) = file size(kb) / duration(seconds).</p>
+        <p class="cod">R:\ffmpeg.exe -i input.mp4 -c:v libx264<span style="color: var(--red)"> -b:v 2600k</span> -preset fast -c:a aac -b:a 194k  output.mp4</p>
+        <ul class="aboutlist">
+            <li><span style="color: var(--red)"></span> Video Bitrate in kbps.</li>
+        </ul>
+        <p>========================</p>
+        <br>
+      </div>
+
+      <div class="shell">
+        <span style="color: var(--yellow)">guest</span>
+        <span style="color: var(--grey)">@</span>
+        <span style="color: var(--green)">doryx3d.github.io</span>
+        <span style="color: var(--grey)">:$ ~</span>
+        <div class="command">
+          OTHER TIPS AND USEFUL COMMANDS
+        </div>
+      </div>
+
+      <div class="return">
+        <p># Compare two video files. You can use this to highlight the differences between the source file and the compressed output.</p>
+        <p class="cod">R:\ffmpeg.exe -i source.mp4 -i encoded.mkv -filter_complex "blend=all_mode=difference,format=yuv420p" -c:v libx264 -crf 20 -c:a copy output.mp4</p>
+        <br>
+        <p># Remember that you can drag and drop ffmpeg.exe from its folder to the terminal. You can do the same with the input files sou you don't have to write the path. <br>
+        You can press TAB to auto-complete path and file names. <br>
+        You can change the work folder with the command <span style="color: var(--red)">cd C:\work\path</span><br>
+        You can press ↑ (up) to recall the previous command and edit it, so you don't have to rewrite it from start. <br>
+        You can paste text in Windows Terminal with Right Mouse Click inside the window. <br>
+        You can stop the currend conversion with CTRL+C</p>
+        <p>========================</p>
+        <br>
+      </div>
+
+      <div class="shell">
+        <span style="color: var(--yellow)">guest</span>
+        <span style="color: var(--grey)">@</span>
+        <span style="color: var(--green)">doryx3d.github.io</span>
+        <span style="color: var(--grey)">:$ ~</span>
+        <div class="command">
+          <nav class="navbar">
+            <ul>
+              <li>go-to ></li>
+              <li><a href="index.html">/home</a></li>
+              <li id="cursor"><a href="aboutme.html">/About Me</a></li>
+              <!--<li><a href="portfolio.html">/Portfolio</a></li>-->
+              <!--<li><a href="faq.html">/FAQ</a></li>
+              <li id="cursor"><a href="tos.html">/ToS</a></li>-->
+            </ul>
+          </nav>
+        </div>
+      </div>
+
+    </div>
+
+
+    <script>
+      const themeSwitch = document.querySelector('.theme-switch');
+      themeSwitch.checked = localStorage.getItem('switchedTheme') === 'true';
+
+      themeSwitch.addEventListener('change', function(e) {
+        if (e.currentTarget.checked === true) {
+          // Add item to localstorage
+          localStorage.setItem('switchedTheme', 'true');
+        } else {
+          // Remove item if theme is switched back to normal
+          localStorage.removeItem('switchedTheme');
+        }
+      });
+    </script>
+  </body>
+</html>
