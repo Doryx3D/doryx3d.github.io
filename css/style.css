@@ -99,6 +99,26 @@ ul{
   list-style-type: none;
 }
 
+ol {
+  counter-reset: item;
+}
+ol > li {
+  counter-increment: item;
+  margin-left: 25px;
+}
+ol ol > li {
+  display: block;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+ol ol > li::before {
+  content: counters(item, ".") ". ";
+  margin-left: -20px;
+}
+.lispace {
+  margin-top: 30px;
+}
+
 a{
   text-decoration: underline;
   color: var(--blue);
@@ -189,6 +209,11 @@ a:hover{
 
 .return .aboutlist {
   margin-top: 10px;
+}
+
+.return .toslist {
+  margin-top: 10px;
+  margin-bottom: 30px;
 }
 
 .profile a {
