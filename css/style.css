@@ -238,10 +238,14 @@ a:hover{
   white-space: nowrap;
 }
 
-@media(max-width:1075px){
-  img {
-    width: 90%;
-  }
+img {
+  max-width: 90%;
+  object-fit: contain;
+}
+
+video {
+  max-width: 90%;
+  object-fit: contain;
 }
 
 @media(max-width:550px){
