@@ -17,7 +17,7 @@
   --nord-orange:    #D08770;
   --nord-button:    #5E81AC;
   --nord-st: "--warm-theme\00a0";
-  --nord-profimg: url(../assets/images/Icon_toon_cold.png);
+  --nord-profimg: url(../assets/images/logo2_oval_nord.png);
 
   /*hot*/
   --gruv-bg:        #32302f;
@@ -32,7 +32,7 @@
   --gruv-orange:    #d65d0e;
   --gruv-button:    #fabd2f;
   --gruv-st: "--cold-theme\00a0";
-  --gruv-profimg: url(../assets/images/Icon_toon_warm.png);
+  --gruv-profimg: url(../assets/images/logo2_oval_gruv.png);
 
   /*default*/
   --bg: var(--nord-bg);
