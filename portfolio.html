@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <title>Doryx3D | Portfolio</title>
+  </head>
+  <body>
+    <input type="checkbox" class="theme-switch "id="theme-switch">
+    <div class="terminal">
+      <label for="theme-switch" class="switch-label"></label>
+      <div class="shell">
+          <span style="color: var(--yellow)">guest</span>
+          <span style="color: var(--grey)">@</span>
+          <span style="color: var(--green)">doryx3d.github.io</span>
+          <span style="color: var(--grey)">:$ ~</span>
+          <div class="command">
+            Portfolio
+          </div>
+      </div>
+
+      <div class="return">
+        <p>▶ 3D Models</p>
+        <p><video autoplay loop muted playsinline height="380"src="assets/images/portfolio/01.mp4"></video>
+        <video autoplay loop muted playsinline height="380"src="assets/images/portfolio/02.mp4"></video> </p>
+        <p><img src="assets/images/portfolio/03.png" alt="Kobold Sushi"> </p>
+        <P><img src="assets/images/portfolio/04.png" alt="Gnoll"> </P>
+        <p>▶ 3D Printing</p>
+        <p><img src="assets/images/portfolio/3D01.jpg" alt="Head Base"> <img src="assets/images/portfolio/3D02.jpg" alt="Head Base"></p>
+        <p><img src="assets/images/portfolio/3D04.jpg" alt="Eyes"> <img src="assets/images/portfolio/3D05.jpg" alt="Eyes and Claws"></p>
+        <p><img src="assets/images/portfolio/3D03.jpg" alt="Coasters"> </p>
+        <p>▶ Games</p>
+        <p><img src="assets/images/portfolio/g01.png" alt="Something Fishy"> </p>
+        <P><img src="assets/images/portfolio/g02.png" alt="Something Fishy"> </P>
+
+      </div>
+
+    <div class="shell">
+      <span style="color: var(--yellow)">guest</span>
+      <span style="color: var(--grey)">@</span>
+      <span style="color: var(--green)">doryx3d.github.io</span>
+      <span style="color: var(--grey)">:$ ~</span>
+      <div class="command">
+        <nav class="navbar">
+          <ul>
+            <li>go-to ></li>
+            <li><a href="index.html">/home</a></li>
+            <li><a href="aboutme.html">/About Me</a></li>
+            <li><a href="tos.html">/ToS</a></li>
+            <li id="cursor"><a href="ffmpegcs.html">/ffmpeg-cheat-sheet</a></li>
+            <!--<li><a href="faq.html">/FAQ</a></li>-->
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+    <script>
+        const themeSwitch = document.querySelector('.theme-switch');
+        themeSwitch.checked = localStorage.getItem('switchedTheme') === 'true';
+  
+        themeSwitch.addEventListener('change', function(e) {
+          if (e.currentTarget.checked === true) {
+            // Add item to localstorage
+            localStorage.setItem('switchedTheme', 'true');
+          } else {
+            // Remove item if theme is switched back to normal
+            localStorage.removeItem('switchedTheme');
+          }
+        });
+    </script>
+  </body>
+</html>
