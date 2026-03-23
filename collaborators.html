@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <title>Doryx3D | Collaborators</title>
+  </head>
+  <body>
+    <input type="checkbox" class="theme-switch "id="theme-switch">
+    <div class="terminal">
+      <label for="theme-switch" class="switch-label"></label>
+      <div class="shell">
+          <span style="color: var(--yellow)">guest</span>
+          <span style="color: var(--grey)">@</span>
+          <span style="color: var(--green)">doryx3d.github.io</span>
+          <span style="color: var(--grey)">:$ ~</span>
+          <div class="command">
+            Collaborators
+          </div>
+      </div>
+
+      <div class="return">
+        <p>Here you can find all the people I regularly collaborate with</p>
+         <div class="collaborators">
+          <div class="collaborator">
+            <img src="assets/images/collab/wwa.png" alt="WhitewingsArt Logo" class="collaborator-logo">
+            <p class="collaborator-description">
+              <strong>WhitewingsArt</strong><br><br>
+              ▶ Digital artist<br>
+              They often help me with design feedback, anatomy supervision, and texturing.<br>
+              I help them with 3D and IT stuff.<br>
+              <a href="https://whitewingsart.weebly.com">whitewingsart.weebly.com</a>
+            </p>
+          </div>
+          <div class="collaborator">
+            <img src="assets/images/collab/cy.png" alt="CasualYelling Logo" class="collaborator-logo">
+            <p class="collaborator-description">
+              <strong>CasualYelling</strong><br><br>
+              ▶ Hobbist "Fursuit Maker" Group<br>
+              I make all the 3D models and most of the PLA 3D printing, and complex patterns.<br>
+              <a href="https://casualyelling.weebly.com">casualyelling.weebly.com</a>
+            </p>
+          </div>
+          <div class="collaborator">
+            <img src="assets/images/collab/lds.png" alt="LilacDreamsStudio Logo" class="collaborator-logo">
+            <p class="collaborator-description">
+              <strong>LilacDreamsStudio</strong><br><br>
+              ▶ Fursuit Maker<br>
+              I make the 3D models for her new head bases and extra parts (antlers, paws, etc), as well as some of the accessories.<br>
+              <a href="https://lilacdreamstudio.carrd.co">lilacdreamstudio.carrd.co</a>
+            </p>
+          </div>
+          </div>
+          <div class="collaborator">
+            <img src="assets/images/collab/stf.avif" alt="StuffedTailsFursuits Logo" class="collaborator-logo">
+            <p class="collaborator-description">
+              <strong>StuffedTailsFursuits</strong><br><br>
+              ▶ Fursuit Maker<br>
+              I make the 3D models for some of her horns, antlers and accessories.<br>
+              <a href="https://www.stuffedtailsfursuits.com">stuffedtailsfursuits.com</a>
+            </p>
+          </div>
+          <!-- Add more -->
+        </div>
+      
+
+      <div class="shell">
+        <span style="color: var(--yellow)">guest</span>
+        <span style="color: var(--grey)">@</span>
+        <span style="color: var(--green)">doryx3d.github.io</span>
+        <span style="color: var(--grey)">:$ ~</span>
+        <div class="command">
+          <nav class="navbar">
+            <ul>
+              <li>go-to ></li>
+              <li><a href="index.html">/Home</a></li>
+              <li><a href="portfolio.html">/Portfolio</a></li>
+              <li><a href="tos.html">/ToS</a></li>
+              <li id="cursor"><a href="ffmpegcs.html">/ffmpeg-cheat-sheet</a></li>
+              <!--<li><a href="faq.html">/FAQ</a></li>-->
+            </ul>
+          </nav>
+        </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const themeSwitch = document.querySelector('.theme-switch');
+      themeSwitch.checked = localStorage.getItem('switchedTheme') === 'true';
+
+      themeSwitch.addEventListener('change', function(e) {
+        if (e.currentTarget.checked === true) {
+          // Add item to localstorage
+          localStorage.setItem('switchedTheme', 'true');
+        } else {
+          // Remove item if theme is switched back to normal
+          localStorage.removeItem('switchedTheme');
+        }
+      });
+    </script>
+  </body>
+</html>

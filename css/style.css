@@ -247,7 +247,36 @@ video {
   max-width: 90%;
   object-fit: contain;
 }
+/* ... existing CSS ... */
 
+/* Collaborator styles */
+.collaborators {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin-top: 20px;
+}
+
+.collaborator {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.collaborator-logo {
+  width: 200px;
+  height: 200px;
+  margin-right: 20px;
+  object-fit: contain;
+}
+
+.collaborator-description {
+  font-size: 1em;
+  color: var(--fg);
+}
+
+/* ... rest of the CSS ... */
 @media(max-width:550px){
   .return.title {
     font-size: 2vw;
